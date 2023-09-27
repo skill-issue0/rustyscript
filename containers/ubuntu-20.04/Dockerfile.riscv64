@@ -13,7 +13,6 @@ RUN apt-get update && apt-get -f install && \
 
 # update ubuntu version
 RUN sudo apt-get -y upgrade
-RUN sudo reboot
 RUN uname -r
 
 RUN apt-get install lsb-release wget software-properties-common gnupg -y
