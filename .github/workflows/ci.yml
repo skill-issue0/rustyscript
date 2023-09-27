@@ -6,30 +6,30 @@ jobs:
     strategy:
       matrix:
         include:
-          - ARCH: x86_64
-            DIST: ubuntu-20.04
-            NAME: linux
-          - ARCH: aarch64
-            DIST: ubuntu-20.04
-            NAME: linux
-          - ARCH: ppc64le
-            DIST: ubuntu-20.04
-            NAME: linux
-          #- ARCH: riscv64
+          #- ARCH: x86_64
           #  DIST: ubuntu-20.04
           #  NAME: linux
-          - ARCH: s390x
+          #- ARCH: aarch64
+          #  DIST: ubuntu-20.04
+          #  NAME: linux
+          #- ARCH: ppc64le
+          #  DIST: ubuntu-20.04
+          #  NAME: linux
+          - ARCH: riscv64
             DIST: ubuntu-20.04
             NAME: linux
-          - ARCH: x86_64
-            DIST: ce-specific
-            NAME: ce-specific
-          - ARCH: x86_64
-            DIST: macos-11
-            NAME: darwin
-          - ARCH: arm64
-            DIST: macos-11
-            NAME: darwin
+          #- ARCH: s390x
+          #  DIST: ubuntu-20.04
+          #  NAME: linux
+          #- ARCH: x86_64
+          #  DIST: ce-specific
+          #  NAME: ce-specific
+          #- ARCH: x86_64
+          #  DIST: macos-11
+          #  NAME: darwin
+          #- ARCH: arm64
+          #  DIST: macos-11
+          #  NAME: darwin
     name: 'Build ${{ matrix.NAME }} (${{ matrix.ARCH }}) [${{ matrix.DIST }}]'
     env:
       DIST: '${{ matrix.DIST }}'

@@ -6,6 +6,11 @@ SHELL ["/bin/bash", "-x", "-c"]
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# update ubuntu version
+RUN sudo apt-get upgrade
+RUN sudo reboot
+RUN uname -r
+
 RUN apt-get update && apt-get -f install && \
     apt-get install -y gcc-9 g++-9 wget curl patchelf vim-common fuse \
         libfuse2 libtool autoconf automake zlib1g-dev libjpeg-dev libpng-dev \
