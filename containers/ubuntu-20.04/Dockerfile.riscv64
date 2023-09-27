@@ -1,6 +1,6 @@
-FROM ppc64le/ubuntu:lunar-20230731
+FROM riscv64/ubuntu:20.04
 
-ENV ARCH=ppc64le DIST=linux NAME=linux
+ENV ARCH=riscv64 DIST=linux NAME=linux
 
 SHELL ["/bin/bash", "-x", "-c"]
 
