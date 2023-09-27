@@ -12,12 +12,6 @@ jobs:
           - ARCH: aarch64
             DIST: ubuntu-20.04
             NAME: linux
-          - ARCH: ppc64le
-            DIST: ubuntu-20.04
-            NAME: linux
-          - ARCH: s390x
-            DIST: ubuntu-20.04
-            NAME: linux
           - ARCH: x86_64
             DIST: ce-specific
             NAME: ce-specific
