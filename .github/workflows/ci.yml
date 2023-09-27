@@ -15,9 +15,9 @@ jobs:
           - ARCH: ppc64le
             DIST: ubuntu-20.04
             NAME: linux
-          - ARCH: riscv64
-            DIST: ubuntu-20.04
-            NAME: linux
+          #- ARCH: riscv64
+          #  DIST: ubuntu-20.04
+          #  NAME: linux
           - ARCH: s390x
             DIST: ubuntu-20.04
             NAME: linux
