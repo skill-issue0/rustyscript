@@ -1,0 +1,50 @@
+name: Build and Release
+'on': release
+jobs:
+  build:
+    runs-on: ${{ matrix.DIST == 'ce-specific' && 'ubuntu-20.04' || matrix.DIST }}
+    strategy:
+      matrix:
+        include:
+          - ARCH: x86_64
+            DIST: ubuntu-20.04
+            NAME: linux
+          - ARCH: aarch64
+            DIST: ubuntu-20.04
+            NAME: linux
+          - ARCH: ppc64le
+            DIST: ubuntu-20.04
+            NAME: linux
+          - ARCH: x390x
+            DIST: ubuntu-20.04
+            NAME: linux
+          - ARCH: x86_64
+            DIST: ce-specific
+            NAME: ce-specific
+          - ARCH: x86_64
+            DIST: macos-11
+            NAME: darwin
+          - ARCH: arm64
+            DIST: macos-11
+            NAME: darwin
+    name: 'Build ${{ matrix.NAME }} (${{ matrix.ARCH }}) [${{ matrix.DIST }}]'
+    env:
+      DIST: '${{ matrix.DIST }}'
+      ARCH: '${{ matrix.ARCH }}'
+      NAME: '${{ matrix.NAME }}'
+    steps:
+      - name: Setup Rust
+        uses: hecrj/setup-rust-action@v1
+        with:
+          rust-version: 1.71
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2.3.0
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up QEMU integration for Docker
+        run: |
+          if [[ "$OSTYPE" != "darwin"* ]]; then
+              docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+          fi
+      - name: Build in Docker
+        run: bash -ex x.sh
