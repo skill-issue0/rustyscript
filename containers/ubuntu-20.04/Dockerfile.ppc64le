@@ -1,4 +1,4 @@
-FROM ppc64le/ubuntu:23.04
+FROM ppc64le/ubuntu:20.04
 
 ENV ARCH=ppc64le DIST=linux NAME=linux
 
